@@ -13,7 +13,7 @@ class Home extends Component{
 	render(){
 		return (
 				<div>
-					hehofj
+					<HomeHeader cityName={this.props.userinfo.cityName} history={this.props.history}/>
 				</div>
 			)
 	}
@@ -23,6 +23,7 @@ class Home extends Component{
 
 function mapStateToProps(state){
 	return {
+		userinfo: state.userinfo
 	}
 }
 
