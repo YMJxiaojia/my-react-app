@@ -5,9 +5,9 @@ react + react-router4.1 + redux + less + ES6/7 + webpack + fetch + bundle-loader
 
 ## 下载
 
- 	git clone https://github.com/Topthinking/react-webapp-dianping.git
+ 	git clone https://github.com/yesixuan/my-react-app.git
 
- 	cd react-webapp-dianping
+ 	cd my-react-app
 
  	npm install
 
@@ -36,15 +36,3 @@ react + react-router4.1 + redux + less + ES6/7 + webpack + fetch + bundle-loader
 ## 说明
 
 >  本项目主要理解 react 和 redux 的原理，以及 react + redux 之间的配合方式，同时对react-router4进行由浅入深的学习和探究，欢迎大家一起学习新的路由方式
-
->  如果觉得不错的话，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
-
->  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
-
->  我的个站[首页](http://topthinking.github.io/)使用的是angular1.4构建的。[地址在这里](https://github.com/Topthinking/top)
-
-## 演示
-[demo](http://topthinking.github.io/dianping/)（请用chrome的手机模式预览）
-
-### 移动端扫描下方二维码
-![](https://github.com/Topthinking/react-webapp-dianping/blob/master/doc/images/demo_code.png)
