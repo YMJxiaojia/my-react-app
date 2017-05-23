@@ -9,12 +9,12 @@ module.exports = {
 	    app: path.resolve(__dirname, 'app/index.jsx'),
 	    // 将 第三方依赖 单独打包
 	    vendor: [
-	      'react', 
-	      'react-dom', 
-	      'react-redux', 
+	      'react',
+	      'react-dom',
+	      'react-redux',
 	      'react-router-dom',
-	      'redux', 
-	      'es6-promise', 
+	      'redux',
+	      'es6-promise',
 	      'whatwg-fetch',
 	      'prismjs',
 	      'fastclick'
@@ -40,28 +40,28 @@ module.exports = {
 					"presets":['react','es2015']
 				}
 			},
-			{ 
-				test: /\.less$/, 
-				exclude: /node_modules/, 
+			{
+				test: /\.less$/,
+				exclude: /node_modules/,
 	            loader: ExtractTextPlugin.extract({
-	               fallback:'style-loader', 
+	               fallback:'style-loader',
 	               use:'css-loader?modules&localIdentName=[local]-[hash:base64:8]!resolve-url-loader!postcss-loader!less-loader'
-	             }) 
+	             })
 			},
-            { 
-            	test: /\.css$/, 
-            	exclude: /node_modules/, 
+            {
+            	test: /\.css$/,
+            	exclude: /node_modules/,
             	loader: ExtractTextPlugin.extract({
-                	fallback:'style-loader', 
+                	fallback:'style-loader',
                 	use:'css-loadermodules&localIdentName=[local]-[hash:base64:8]!resolve-url-loader!postcss-loader'
-              	}) 
+              	})
             },
-            { 
-            	test:/\.(png|gif|jpg|jpeg|bmp)$/, 
-            	loader:'url-loader?limit=1&name=images/[name].[hash:8].[ext]' 
+            {
+            	test:/\.(png|gif|jpg|jpeg|bmp)$/,
+            	loader:'url-loader?limit=1&name=images/[name].[hash:8].[ext]'
             },  // 限制大小5kb
-            { 
-            	test:/\.(woff|woff2|svg|ttf|eot)($|\?)/, 
+            {
+            	test:/\.(woff|woff2|svg|ttf|eot)($|\?)/,
             	loader:'file-loader?name=fonts/[name].[hash:8].[ext]'
             } // 限制大小小于5k
 		]
@@ -85,7 +85,7 @@ module.exports = {
 		}),
 
 		// 分离CSS
-    	new ExtractTextPlugin('style/[name].[chunkhash:8].css'), 
+    	new ExtractTextPlugin('style/[name].[chunkhash:8].css'),
 
 		new webpack.HotModuleReplacementPlugin(),
 
@@ -99,7 +99,7 @@ module.exports = {
 	devServer:{
 		proxy:{
 			'/api':{
-				target:"http://localhost:3000",
+				target:"http://localhost:3002",
 				secure:false
 			}
 		},

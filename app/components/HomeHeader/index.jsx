@@ -17,15 +17,18 @@ class HomeHeader extends Component{
 		return (
 				<div id={styles["home-header"]} className="clear-fix">
 					<div className={styles["home-header-left"]+" float-left"}>
-						<Link to="/city"></Link>
-						<span>{this.props.cityName}</span>
-						<i className="icon-angle-down"></i>
+						<Link to="/city">
+							<span>{this.props.cityName}</span>
+							&nbsp;
+							<i className="icon-angle-down"></i>
+						</Link>
+					</div>
+					<div className={styles["home-header-right"]+" float-right"}>
+						<Link to="/user">
+							<i className="icon-user"></i>
+						</Link>
 					</div>
 					<SearchInput/>
-					<div className={styles["home-header-right"]+" float-right"}>
-						<Link to="/user"></Link>
-						<i className="icon-user"></i>
-					</div>
 				</div>
 			)
 	}

@@ -13,10 +13,10 @@ class SearchInput extends Component{
 	}
 	render() {
 		return(
-			<div>
+			<div className={styles['search-container']}>
 				<i className="icon-search"></i>
-				<input 
-					type="text" 
+				<input
+					type="text"
 					placeholder="搜索..."
 					value={this.state.value}
 					onChange={this.changeHandle.bind(this)}

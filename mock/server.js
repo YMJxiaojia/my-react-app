@@ -85,4 +85,4 @@ router.get('/api/detail/comment/:page/:id', function *(next) {
 //开启服务
 app.use(router.routes())
    .use(router.allowedMethods());
-app.listen(3000);
+app.listen(3002);
