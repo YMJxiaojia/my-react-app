@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import HomeHeader from '../../components/HomeHeader'
 import Category from '../../components/Category'
 import Ad from './subpage/Ad'
+import List from './subpage/List'
 
 class Home extends Component{
 	constructor(props) {
@@ -19,6 +20,7 @@ class Home extends Component{
 					<Category/>
 					<div style={{height: '15px'}}></div>
 					<Ad/>
+					<List cityName={this.props.userinfo.cityName}/>
 				</div>
 			)
 	}
