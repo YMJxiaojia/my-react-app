@@ -3,7 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import {getListData} from '../../../fetch/home/home'
 import HomeList from '../../../components/List'
-// import LoadMore from '../../../components/LoadMore'
+import LoadMore from '../../../components/LoadMore'
 
 import ListData from '../../../../mock/home/list'
 
@@ -30,9 +30,9 @@ class List extends Component {
 					: <div>{this.state.data.length} 页</div>
 				}
 				{
-					/*this.state.hasMore
-						? <LoadMore isLoadingMore={this.state.isLoadingMore} LoadMoreFn={this.LoadMoreData.bind(this)}/>
-						: ''*/
+					this.state.hasMore
+					? <LoadMore isLoadingMore={this.state.isLoadingMore} loadMoreFn={this.loadMoreData.bind(this)}/>
+					: ''
 				}
 			</div>
 		)
@@ -43,10 +43,22 @@ class List extends Component {
 		const result = getListData(cityName,0)
 		this.resultHandle(result)
 	}
+	loadMoreData() {
+		this.setState({
+			isLoadingMore: true
+		})
+		const cityName = this.props.cityName
+		const page = this.state.page
+		const result = getListData(cityName,page)
+		this.resultHandle(result)
+		// 增加页数
+		this.setState({
+			page: page+1
+		})
+	}
 	resultHandle(result) {
 		result.then(res => {
 			if(res.ok) {
-				// console.log('成功')
 				return res.json()
 			}else {
 				console.log("当前城市"+this.props.cityName)
@@ -56,18 +68,15 @@ class List extends Component {
 		}).then(json => {
 			const data = json.data
 			const hasMore = json.hasMore
-			// console.log(this.setState)
 			this.setState({
 				hasMore: hasMore,
 				data: this.state.data.concat(data),
 				isLoadingMore: false
 			})
-		}).then(()=>{
-			console.log(this.state)
-		})/*.catch(err => {
+		}).catch(err => {
 			console.log(this.state.data)
-			// console.log(err.message) 
-		})*/
+			console.log(err.message)
+		})
 	}
 }
 
