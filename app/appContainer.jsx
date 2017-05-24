@@ -20,6 +20,13 @@ import HomeContainer from './containers/Home'
 import FooterContainer from './components/Footer'
 
 // 异步加载文件
+import CityContainer from 'bundle-loader?lazy!./containers/City'
+
+const City = (props) => (
+	<Bundle load={CityContainer}>
+		{(City) => <City history={props.props.history}/>}
+	</Bundle>
+)
 
 class AppContainer extends Component{
 	constructor(props, context) {
@@ -37,11 +44,17 @@ class AppContainer extends Component{
 				this.state.initDone
 				?	<div id="app">
 						<Switch>
-							<Route exact path="/" component={HomeContainer}/>
+							<Route exact path="/" component={HomeContainer} />
+							<Route exact 
+								path="/city" 
+								render={props => (
+									<City props={props} />
+								)} 
+							/>
 						</Switch>
 						<FooterContainer history={history}/>
 					</div>
-				: 	<div>正在加载...</div>
+				: <div>正在加载...</div>
 			}
 			</Router>
 		)
