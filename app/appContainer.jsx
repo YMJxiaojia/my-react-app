@@ -21,10 +21,19 @@ import FooterContainer from './components/Footer'
 
 // 异步加载文件
 import CityContainer from 'bundle-loader?lazy!./containers/City'
+import SearchContainer from 'bundle-loader?lazy!./containers/Search'
 
 const City = (props) => (
 	<Bundle load={CityContainer}>
 		{(City) => <City history={props.props.history}/>}
+	</Bundle>
+)
+const Search = (props) => (
+	<Bundle load={SearchContainer}>
+		{(Search) => <Search 
+			history={props.props.history}
+			match={props.props.match}
+			/>}
 	</Bundle>
 )
 
@@ -49,6 +58,12 @@ class AppContainer extends Component{
 								path="/city" 
 								render={props => (
 									<City props={props} />
+								)} 
+							/>
+							<Route exact 
+								path="/search/:category/:keyword?" 
+								render={props => (
+									<Search props={props} />
 								)} 
 							/>
 						</Switch>
