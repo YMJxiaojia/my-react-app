@@ -22,6 +22,7 @@ import FooterContainer from './components/Footer'
 // 异步加载文件
 import CityContainer from 'bundle-loader?lazy!./containers/City'
 import SearchContainer from 'bundle-loader?lazy!./containers/Search'
+import DetailContainer from 'bundle-loader?lazy!./containers/Detail'
 
 const City = (props) => (
 	<Bundle load={CityContainer}>
@@ -30,10 +31,18 @@ const City = (props) => (
 )
 const Search = (props) => (
 	<Bundle load={SearchContainer}>
-		{(Search) => <Search 
+		{(Search) => <Search
 			history={props.props.history}
 			match={props.props.match}
 			/>}
+	</Bundle>
+)
+const Detail = (props) => (
+	<Bundle load={DetailContainer}>
+		{(Detail) => <Detail
+			history={props.props.history}
+			match={props.props.match}
+		/>}
 	</Bundle>
 )
 
@@ -54,17 +63,23 @@ class AppContainer extends Component{
 				?	<div id="app">
 						<Switch>
 							<Route exact path="/" component={HomeContainer} />
-							<Route exact 
-								path="/city" 
+							<Route exact
+								path="/city"
 								render={props => (
 									<City props={props} />
-								)} 
+								)}
 							/>
-							<Route exact 
-								path="/search/:category/:keyword?" 
+							<Route exact
+								path="/search/:category/:keyword?"
 								render={props => (
 									<Search props={props} />
-								)} 
+								)}
+							/>
+							<Route exact
+								path="/detail/:id"
+								render={props => (
+									<Detail props={props} />
+								)}
 							/>
 						</Switch>
 						<FooterContainer history={history}/>
@@ -83,7 +98,7 @@ class AppContainer extends Component{
 		this.props.userInfoActions.update({
 			cityName:cityName
 		})
-		
+
 		this.setState({
 			initDone:true
 		})
