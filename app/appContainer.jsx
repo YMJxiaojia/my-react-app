@@ -23,6 +23,7 @@ import FooterContainer from './components/Footer'
 import CityContainer from 'bundle-loader?lazy!./containers/City'
 import SearchContainer from 'bundle-loader?lazy!./containers/Search'
 import DetailContainer from 'bundle-loader?lazy!./containers/Detail'
+import LoginContainer from 'bundle-loader?lazy!./containers/Login'
 
 const City = (props) => (
 	<Bundle load={CityContainer}>
@@ -40,6 +41,14 @@ const Search = (props) => (
 const Detail = (props) => (
 	<Bundle load={DetailContainer}>
 		{(Detail) => <Detail
+			history={props.props.history}
+			match={props.props.match}
+		/>}
+	</Bundle>
+)
+const Login = (props) => (
+	<Bundle load={LoginContainer}>
+		{(Login) => <Login
 			history={props.props.history}
 			match={props.props.match}
 		/>}
@@ -79,6 +88,12 @@ class AppContainer extends Component{
 								path="/detail/:id"
 								render={props => (
 									<Detail props={props} />
+								)}
+							/>
+							<Route
+								path="/login/:prevUrl"
+								render={props => (
+									<Login props={props} />
 								)}
 							/>
 						</Switch>
