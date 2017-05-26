@@ -20,7 +20,7 @@ class Star extends Component {
             star >= item
             ? styles["light"]
             : ''
-          return <i key={index} className={'icon-star' + lightClass}></i>
+          return <i key={index} className={'icon-star ' + lightClass}></i>
         })}
       </div>
     )
