@@ -24,6 +24,7 @@ import CityContainer from 'bundle-loader?lazy!./containers/City'
 import SearchContainer from 'bundle-loader?lazy!./containers/Search'
 import DetailContainer from 'bundle-loader?lazy!./containers/Detail'
 import LoginContainer from 'bundle-loader?lazy!./containers/Login'
+import UserContainer from 'bundle-loader?lazy!./containers/User'
 
 const City = (props) => (
 	<Bundle load={CityContainer}>
@@ -51,6 +52,13 @@ const Login = (props) => (
 		{(Login) => <Login
 			history={props.props.history}
 			match={props.props.match}
+		/>}
+	</Bundle>
+)
+const User = (props) => (
+	<Bundle load={UserContainer}>
+		{(User) => <User
+			history={props.props.history}
 		/>}
 	</Bundle>
 )
@@ -94,6 +102,12 @@ class AppContainer extends Component{
 								path="/login/:prevUrl"
 								render={props => (
 									<Login props={props} />
+								)}
+							/>
+							<Route exact
+								path="/user"
+								render={props => (
+									<User props={props} />
 								)}
 							/>
 						</Switch>

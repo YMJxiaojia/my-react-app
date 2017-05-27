@@ -19,7 +19,11 @@ class Header extends Component {
     )
   }
   clickHandle() {
-    window.history.back()
+    if(this.props.backRouter) {
+      this.props.history.push(this.props.backRouter)
+    }else {
+      window.history.back()
+    }
   }
 }
 
